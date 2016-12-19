@@ -2,7 +2,7 @@ import NavBar from './Elements/Navbar.jsx';
 import { Component } from 'react';
 import React from 'react';
 import { withRouter } from 'react-router';
-// import propServices from '../services/propServices';
+import propServices from '../services/propServices';
 
 class App extends Component {
     constructor(props){
@@ -21,7 +21,6 @@ class App extends Component {
     }
 
     addNewProposition(proposition){
-        // add this moment as date in database
       this.setState((prevState) => {
         prevState.propositions.unshift(proposition);
         return prevState;
@@ -29,7 +28,7 @@ class App extends Component {
     }
 
     fetchAllPropositions(){
-        propServices.getAllProps().then((resp) => {
+        propServices.getAllPropositions().then((resp) => {
           this.setState((prevState) => {
             prevState.propositions = resp.content.propositions;
             return prevState;

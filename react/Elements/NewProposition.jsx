@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import React from 'react';
-// import propServices from '../services/propServices';
+import propServices from '../services/propServices';
 
 export default class NewProposition extends Component {
     constructor(props){
@@ -19,10 +19,10 @@ export default class NewProposition extends Component {
     }
 
     createProposition(){
-        propServices.createProp(this.state.content)
+        propServices.createProposition(this.state.content, [])
           .then((resp) => {
             this.setState({content : ''})
-            this.props.onSubmit(resp.content);
+            this.props.onSubmit(resp.content.proposition);
           });
     }
 

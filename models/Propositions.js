@@ -82,9 +82,9 @@ var Propositions = (function(propositionModel) {
                         thread: []
                     });
 
-                    proposition.save(function(err) {
+                    proposition.save(function(err, newProp) {
                         if (err) callback({msg: err});
-                        else callback(null);
+                        else callback(null, newProp);
                     });
                 };
             });
