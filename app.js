@@ -4,19 +4,13 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var webpackDevHelper = require('./hotReload.js');
-// var utils = require('../utils/utils.js');
 
 // require routes
 var auth = require('./routes/auth');
-var climbers = require('./routes/climbers');
-var climbs = require('./routes/climbs');
-var competitions = require('./routes/competitions');
-var hosts = require('./routes/hosts');
-var problems = require('./routes/problems');
+var climbers = require('./routes/propositions');
 
-// require Climber
-var Climbers = require('./models/Climbers');
-var Hosts = require('./models/Hosts');
+// require models
+var Propositions = require('./models/Propositions');
 
 var mongoose = require('mongoose');
 var app = express();
@@ -46,17 +40,12 @@ db.on('error', console.error.bind(console, 'connection error:'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({ secret : '6170', resave : true, saveUninitialized : true }));
-
-// console.log(require('os').hostname());
+app.use(session({ secret : 'efficiency', resave : true, saveUninitialized : true }));
 
 //setup routes
 app.use('/auth', auth);
-app.use('/climbers', climbers);
-app.use('/climbs', climbs);
-app.use('/competitions', competitions);
-app.use('/hosts', hosts);
-app.use('/problems', problems);
+app.use('/entities', entities);
+app.use('/propositions', propositions);
 app.get('*', function(req,res) {
    res.sendFile(path.join(__dirname, 'public/index.html'));
 });

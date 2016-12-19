@@ -1,0 +1,1 @@
+// holds previous edits of a summary or proposition

@@ -15,7 +15,7 @@ export default class Home extends Component {
     render(){
         return (
             <div className='container'>
-                <div className='col-md-3' id='namebox'>
+                <div className='col-md-3'>
                     <h1>Propositions</h1>
                 </div>
                 <div className='col-md-6'>

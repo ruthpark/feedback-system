@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import React from 'react';
+// import propServices from '../services/propServices';
 
 export default class NewProposition extends Component {
     constructor(props){
