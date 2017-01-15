@@ -25,6 +25,14 @@ router.get('/currentUser', function(req, res) {
  * POST /auth/login
  */
 router.post('/login', function(req, res) {
+	req.session.userId = req.body.userId;
+	utils.sendSuccessResponse(res, {userId: userId});
+});
+
+/**
+ * POST /auth/register
+ */
+router.post('/register', function(req, res) {
 });
 
 /**

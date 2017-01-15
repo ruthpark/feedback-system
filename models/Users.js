@@ -22,6 +22,49 @@ var userModel = mongoose.model('User', userSchema);
 var errorUtils = require('../utils/errorUtils');
 
 var Users = (function(userModel) {
+	var that = {};
+
+	that.addUser = function(firstName, lastName, email, entityId, callback) {
+		// if anything blank or email exists, respond with an error message
+		userModel.find({email: email}).exec(function(err, users) {
+			var user = new userModel({
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				groups: [],
+				entity: entityId,
+				preferences: []
+			});
+
+			user.save(function(err, newUser) {
+				if (err) callback({msg: err});
+				else callback(null, newUser);
+			})
+		})
+	}
+
+	that.findUser = function(email, callback) {
+		userModel.findOne({ email: email }, function(err, result) {
+      	if (err) callback({ msg: err });
+	      if (result !== null) {
+	        callback(null, result);
+	      } else {
+	        callback({ msg: 'No such user!' });
+	      }
+	    });
+	}
+
+	that.checkPassword = function(email, password, callback) {
+	    userModel.findOne({ email: email }, function(err, result) {
+	      if (err) callback({ msg: err });
+	      if (result !== null && password === result.password) {
+	        callback(null, true);
+	      } else {
+	        callback(null, false);
+	      }
+	    });
+	}
+
 
     Object.freeze(that);
     return that;

@@ -7,6 +7,8 @@
 var express = require('express');
 var router = express.Router();
 var utils = require('../utils/utils.js');
+var AuthHelpers = require('../utils/authHelpers.js');
+var requireLoggedIn = AuthHelpers.requireLoggedIn;
 
 var Propositions = require('../models/Propositions');
 

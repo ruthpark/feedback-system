@@ -22,16 +22,16 @@ class NavBar extends Component {
             <nav className="navbar navbar-inverse navbar-fixed-top bug-fix" role="navigation">
                 <div className="container">
                     <div className="navbar-header">
-                        <IndexLink to='/climber/'
+                        <IndexLink to='/'
                                    className="navbar-brand"
-                                   style={{display: thisComponent.props.currentUser ? 'block' : 'none'}}>
+                                   style={{display: this.props.currentUser ? 'block' : 'none'}}>
                             {this.props.currentUser}
                         </IndexLink>
                         <button type="button"
                                 className="navbar-toggle collapsed"
                                 data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1"
-                                aria-expanded=false>
+                                aria-expanded="false">
                             <span className="sr-only">Toggle navigation</span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>

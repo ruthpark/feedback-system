@@ -7,7 +7,7 @@ var webpackDevHelper = require('./hotReload.js');
 
 // require routes
 var auth = require('./routes/auth');
-var climbers = require('./routes/propositions');
+var propositions = require('./routes/propositions');
 
 // require models
 var Propositions = require('./models/Propositions');
@@ -44,7 +44,6 @@ app.use(session({ secret : 'efficiency', resave : true, saveUninitialized : true
 
 //setup routes
 app.use('/auth', auth);
-app.use('/entities', entities);
 app.use('/propositions', propositions);
 app.get('*', function(req,res) {
    res.sendFile(path.join(__dirname, 'public/index.html'));

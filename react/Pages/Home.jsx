@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import React from 'react';
-import Feed from '../Elements/TweetFeed.jsx';
-import NewProposition from '../Elements/TweetForm.jsx';
+import Feed from '../Elements/Feed.jsx';
+import NewProposition from '../Elements/NewProposition.jsx';
 
 export default class Home extends Component {
     constructor(props){
